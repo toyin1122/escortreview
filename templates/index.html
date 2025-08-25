@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kelly,s Elite Companion Services</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>KELLY</h1>
+            <p class="tagline">Elite Companion Services</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Your Discreeet and Elegant companion</h2>
+            <p>Available for exclusive engagements and memorable experiences</p>
+            <a href="#contact" class="btn">BOOK NOW</a>
+        </div>
+    </section>
+
+    <section id="About">
+        <div class="container">
+            <h2>About kelly</h2>
+            <p>i'm Kelly - Confident,refined, and always attentive. i offer elitew companion tailored to gentlemen who value discretion, elegance, amd authenticity.</p>
+        </div>
+    </section>
+    
+    <section id="Services">
+        <div class="container">
+            <h2>SERVICES</h2>
+            <ul class="services-list">
+                <li>DINNER DATES</li>
+                <li>PRIVATE EVENTS</li>
+                <li>MEET UP</li>
+                <li>MASSAGES</li>
+                <li>TRAVEL COMPANION</li>
+                <li>ONLINE SERVICES</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="gallery">
+            <div class="container">
+                <h2>GALLERY</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">IMAGE 1</div>
+                    <div class="gallery-item">IMAGE 2</div>
+                    <div class="gallery-item">IMAGE 3</div>
+                </div>
+                <P class="note">photos available upon request for privacy.</P>
+            </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>CONTACT KELLY</h2>
+            <form action="/send_message" method="post">
+                <input type="text" name="name" placeholder="your name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message"  placeholder="your message" required></textarea>
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="reviews" id="review list">
+        <div class="review">
+            <div class="stars">****</div>
+            <h3>JAMES T.</h3>
+            <P>kelly Was icrediblyprofesssional and charming. the entire booking process was smooth, and she made sure i felt comfortable the whole time.Highly recommended !</P>
+        </div>
+
+        <div class="review">
+            <div class="stars">star</div>
+            <h3>MICHAEL R.</h3>
+            <P>A Wonderful evening with kelly. she's warm, attentive, and easy to talk to. The only reason i gave 4 stars instead of 5 was the scheduling was a bit tricky but worth it in the end</P>
+        </div>
+
+        <div class="review">
+            <div class="stars">star</div>
+            <h3>DAVID K.</h3>
+            <P>Kelly exceeded my espectations. Elegant, punctual, and genune. I  will definitely be booking again.</P>
+        </div>
+    </section>
+
+    <section class="review-form">
+        <h4>Leave your Review</h4>
+        <form id="addReviewForm" action="/add_review" method="post">
+            <input type="text" name="name" placeholder="Your name" required>
+            <select id="rating" name="rating" required>
+                <option value="">choose rating</option>
+                <option value="5">5 stars</option>
+                <option value="4">4 stars</option>
+                <option value="3">3 stars</option>
+                <option value="2">2 stars</option>
+                <option value="1">1 star</option>
+            </select>
+            <textarea id="message" name="message" rows="4" placeholder="write your review....." required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+    </section>
+
+ 
+    <hr>
+    <section>
+        <h3>CLIENT REVIEWS</h3>
+        <div id="review-list">
+            {% for review in reviews %}
+            <div  class="review">
+                <h4>{{ review.name }} - {{ review.rating }} stars </h4>
+                <p>{{ review.message }}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>2023 kelly's Companion Services. All rights reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("addReviewForm");
+            const reviewList = document.getElementById("review-list");
+
+            form.addEventListener("submit", function(event){
+               if (ratingSelect.value === "") {
+                alert("please select a rating before submitting your review.");
+                 event.preventDefault(); 
+               }
+
+                const name = document.getElementById("name").value;
+                const rating = document.getElementById("rating").value;
+                const message = document.getElementById("message").value;
+
+                // create review element
+                const review = document.createElement("div");
+                review.classList.add("review");
+                review.innerHTML = `
+                 <div class ="stars">${"*".repeat(rating)}</div>
+                 <h3>${name}</h3>
+                 <p>${message}</p>
+                 <button class ="delete-btn">Delete</button>
+                `;
+
+                // delete button
+                review.querySelector(".delete-btn").addEventListener("click", function() {
+                    review.remove();
+                });
+
+                reviewList.appendChild(review);
+                form.reset();
+            });
+        });
+    </script>
+</body>
+</html>

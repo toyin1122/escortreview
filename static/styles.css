@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+.containr {
+    width: 90%;
+    max-width: 100px;
+    margin: auto;
+    padding: 20px 0;
+}
+
+header {
+    background: #222;
+    color: #ffd;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.tagline {
+    font-size: 1.2em;
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+nav {
+    background: #444;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    padding: 15px 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background: #666;
+}
+
+#hero {
+    background: url('hero-placeholder.jpg');
+    padding: 80px 20px;
+    color: wheat;
+    text-align: center;
+}
+
+#hero .btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: #e91e63;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+section {
+    padding: 60px 0;
+}
+
+.service-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.service-list li {
+    flex: 1 1 40%;
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.gallery-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery-item {
+    flex: 1 1 30%;
+    height: 150px;
+    background: #ccc;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 150px;
+    font-weight: bold;
+}
+
+.note {
+    margin-top: 10px;
+    font-style: italic;
+    text-align: center;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+form button {
+    background: #e91e63;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button :hover {
+    background: #d81b60;
+}
+
+footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.reviews {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.review {
+   background: white;
+   padding: 20px;
+   margin-bottom: 20px;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.review:hover {
+    transform: scale(1.02);
+}
+
+.review h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* review form */
+.review-form {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.review-form h2 {
+    color: #5a3e85;
+}
+
+.review-form input, .review-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.review-form button {
+    background: #5a3e85;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.review-form button:hover {
+    background: #402a63;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 0.9em;
+}
+
+/* responsive design */
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    .review, .review-form {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 30px 15px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .review h3 {
+        font-size: 1.1em;
+    }
+
+    .reviews, .review-form {
+        margin: 20px auto;
+        padding: 10px;
+
+    }
+}
